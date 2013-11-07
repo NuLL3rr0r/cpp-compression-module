@@ -1,0 +1,16 @@
+In Visual Studio Command Prompt (2010), in the boost source tree:
+
+cd .\tools\build\v2\engine\
+.\build.bat vc11
+move .\bin.ntx86\bjam.exe ..\..\..\..\
+cd ..\..\..\..\
+mkdir .\build
+
+
+bjam --help
+bjam --show-libraries
+
+
+bjam toolset=msvc --build-type=minimal threading=multi link=static runtime-link=static --build-dir=".\build" --prefix="D:\Dev-Temp\Boost" --without-mpi --without-python -sZLIB_SOURCE="D:\Dev-Temp\zlib-1.2.8" install
+
+
