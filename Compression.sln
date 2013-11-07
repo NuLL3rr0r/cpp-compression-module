@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Compression", "Compression\Compression.vcxproj", "{798DAC6F-8802-4A48-AAA4-D15037954243}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Testbed", "Testbed\Testbed.vcxproj", "{2379DD21-74BE-4AF5-8322-F52FDBCF257F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{798DAC6F-8802-4A48-AAA4-D15037954243}.Debug|Win32.ActiveCfg = Debug|Win32
+		{798DAC6F-8802-4A48-AAA4-D15037954243}.Debug|Win32.Build.0 = Debug|Win32
+		{798DAC6F-8802-4A48-AAA4-D15037954243}.Release|Win32.ActiveCfg = Release|Win32
+		{798DAC6F-8802-4A48-AAA4-D15037954243}.Release|Win32.Build.0 = Release|Win32
+		{2379DD21-74BE-4AF5-8322-F52FDBCF257F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{2379DD21-74BE-4AF5-8322-F52FDBCF257F}.Debug|Win32.Build.0 = Debug|Win32
+		{2379DD21-74BE-4AF5-8322-F52FDBCF257F}.Release|Win32.ActiveCfg = Release|Win32
+		{2379DD21-74BE-4AF5-8322-F52FDBCF257F}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
