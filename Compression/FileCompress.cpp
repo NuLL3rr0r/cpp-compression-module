@@ -72,15 +72,14 @@ bool FileCompress::Compress(const std::wstring &originalFile, const std::wstring
 	try {
 		out_error.clear();
 
-		size_t bufferSize;
 		ByteBuffer_t buffer;
 
-		if (IO::ReadFile(originalFile, bufferSize, buffer)) {
+		if (IO::ReadFile(originalFile, buffer)) {
 			ofstream file(compressedFile, ios::binary | ios::trunc);
 			iostreams::filtering_streambuf<iostreams::output> output;
 			output.push(iostreams::zlib_compressor());
 			output.push(file);
-			iostreams::write(output, buffer, bufferSize);
+			iostreams::write(output, &buffer[0], buffer.size());
 
 			return true;
 		} else {
@@ -115,16 +114,14 @@ bool FileCompress::Decompress(const std::wstring &compressedFile, const std::wst
 	try {
 		out_error.clear();
 
-		size_t bufferSize;
 		ByteBuffer_t buffer;
 
-		if (IO::ReadFile(compressedFile, bufferSize, buffer)) {
+		if (IO::ReadFile(compressedFile, buffer)) {
 			ofstream file(uncompressedFile, ios::binary | ios::trunc);
 			iostreams::filtering_streambuf<iostreams::output> output;
 			output.push(iostreams::zlib_decompressor());
 			output.push(file);
-			iostreams::write(output, buffer, bufferSize);
-			delete buffer;
+			iostreams::write(output, &buffer[0], buffer.size());
 
 			return true;
 		} else {

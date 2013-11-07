@@ -7,14 +7,19 @@
 using namespace std;
 using namespace Compression;
 
-bool IO::ReadFile(const std::string &fileName, std::size_t &out_dataSize, ByteBuffer_t &out_data)
+bool IO::ReadFile(const std::string &fileName, ByteBuffer_t &out_data)
 {
-	return ReadFile(Utils::StrToWStr(fileName), out_dataSize, out_data);
+	return ReadFile(Utils::StrToWStr(fileName), out_data);
 }
 
-bool IO::ReadFile(const std::wstring &fileName, std::size_t &out_dataSize, ByteBuffer_t &out_data)
+bool IO::WriteFile(const std::string &fileName, const ByteBuffer_t &data)
 {
-	out_data = NULL;
+	return WriteFile(Utils::StrToWStr(fileName), data);
+}
+
+bool IO::ReadFile(const std::wstring &fileName, ByteBuffer_t &out_data)
+{
+	out_data.clear();
 
 	std::ifstream file(fileName, ios::binary | ios::ate);
     if (file.is_open()) {
@@ -24,8 +29,21 @@ bool IO::ReadFile(const std::wstring &fileName, std::size_t &out_dataSize, ByteB
         file.read(buffer, size);
         file.close();
 
-		out_dataSize = size;
-		out_data = buffer;
+		out_data.assign(buffer, buffer + size);
+		delete buffer;
+
+		return true;
+    }
+
+	return false;
+}
+
+bool IO::WriteFile(const std::wstring &fileName, const ByteBuffer_t &data)
+{
+    std::ofstream file(fileName, std::ios::binary | std::ios::trunc);
+    if (file.is_open()) {
+		file.write(&data[0], data.size());
+        file.close();
 
 		return true;
     }

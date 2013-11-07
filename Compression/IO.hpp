@@ -13,8 +13,11 @@ namespace Compression {
 class Compression::IO
 {
 public:
-	static bool ReadFile(const std::string &fileName, std::size_t &out_dataSize, ByteBuffer_t &out_data);
-	static bool ReadFile(const std::wstring &fileName, std::size_t &out_dataSize, ByteBuffer_t &out_data);
+	static bool ReadFile(const std::string &fileName, ByteBuffer_t &out_data);
+	static bool WriteFile(const std::string &fileName, const ByteBuffer_t &data);
+
+	static bool ReadFile(const std::wstring &fileName, ByteBuffer_t &out_data);
+	static bool WriteFile(const std::wstring &fileName, const ByteBuffer_t &data);
 };
 
 
